@@ -1,24 +1,29 @@
 <!DOCTYPE html>
+
+{% load static %}
+
 <html>
 	<head>
 		<title>Brain Cell Blaster</title>
-		<link rel="stylesheet" type="text/css" href="../../css/style.css">
+		<link rel="stylesheet" type="text/css" href="../../static/css/style.css">
 
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" ></script>
+        <!--<script src="../../js/main.js"></script>-->
+        <script src="../../static/js/main2.js"></script>
 
 		<script>
-
-			$(document).ready(function(){
-				$('.game_cell').click(function(){
-					console.log($(this).data('cell-pos'))
-					$(this).css("transform","rotate(90deg)");
-				});
+			jQuery(document).ready(function(){
+				init();
 			});
 		</script>
 	</head>
 	<body>
 		<div class="container">
-            Don't strain your brain! <strong>{{ boldmessage }}</strong><br />
+            <h1>Brain Strain...</h1>
+            <img src="{% static 'rooster.jpg' %}" alt="Picture of Rooster" />
+            <strong>Don't strain your brain:</strong> {{ bold_message }}<br />
+            <a href="/brain_game/login/">login</a><br /><br />
+
 			<div class="game_board">
 				<div class="game_cell" data-side="1" data-cell-pos="a1">Yellow</div>
 				<div class="game_cell" data-side="1" data-cell-pos="a2">Red</div>
