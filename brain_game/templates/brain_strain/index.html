@@ -5,12 +5,13 @@
 <html>
 	<head>
 		<title>Brain Cell Blaster</title>
-		<link rel="stylesheet" type="text/css" href="../../static/css/style.css">
+		<!--<link rel="stylesheet" type="text/css" href="../../static/css/style.css">-->
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" ></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" ></script>
         <!--<script src="../../js/main.js"></script>-->
-        <script src="../../static/js/main2.js"></script>
-
+        <!--<script src="../../static/js/main2.js"></script>-->
+        <script src="{% static 'js/main2.js' %}"></script>
 		<script>
 			jQuery(document).ready(function(){
 				init();
@@ -20,28 +21,36 @@
 	<body>
 		<div class="container">
             <h1>Brain Strain...</h1>
-            <img src="{% static 'rooster.jpg' %}" alt="Picture of Rooster" />
+{#            #}
+{#            <img src="{% static 'rooster.jpg' %}" alt="Picture of Rooster" />#}
+{#            #}
             <strong>Don't strain your brain:</strong> {{ bold_message }}<br />
             <a href="/brain_game/login/">login</a><br /><br />
 
 			<div class="game_board">
-				<div class="game_cell" data-side="1" data-cell-pos="a1">Yellow</div>
-				<div class="game_cell" data-side="1" data-cell-pos="a2">Red</div>
-				<div class="game_cell" data-side="1" data-cell-pos="a3">Green</div>
-				<div class="game_cell" data-side="1" data-cell-pos="a4">Blue</div>
-				<div class="game_cell" data-side="1" data-cell-pos="b1"></div>
-				<div class="game_cell" data-side="1" data-cell-pos="b2"></div>
-				<div class="game_cell" data-side="1" data-cell-pos="b3"></div>
-				<div class="game_cell" data-side="1" data-cell-pos="b4"></div>
-				<div class="game_cell" data-side="1" data-cell-pos="c1"></div>
-				<div class="game_cell" data-side="1" data-cell-pos="c2"></div>
-				<div class="game_cell" data-side="1" data-cell-pos="c3"></div>
-				<div class="game_cell" data-side="1" data-cell-pos="c4"></div>
-				<div class="game_cell" data-side="1" data-cell-pos="d1"></div>
-				<div class="game_cell" data-side="1" data-cell-pos="d2"></div>
-				<div class="game_cell" data-side="1" data-cell-pos="d3"></div>
-				<div class="game_cell" data-side="1" data-cell-pos="d4"></div>
+				<div class="game_cell" data-side="unflipped" data-cell-pos="a1">Yellow</div>
+				<div class="game_cell" data-side="unflipped" data-cell-pos="a2">Red</div>
+				<div class="game_cell" data-side="unflipped" data-cell-pos="a3">Green</div>
+				<div class="game_cell" data-side="unflipped" data-cell-pos="a4">Blue</div>
+				<div class="game_cell" data-side="unflipped" data-cell-pos="b1"></div>
+				<div class="game_cell" data-side="unflipped" data-cell-pos="b2"></div>
+				<div class="game_cell" data-side="unflipped" data-cell-pos="b3"></div>
+				<div class="game_cell" data-side="unflipped" data-cell-pos="b4"></div>
+				<div class="game_cell" data-side="unflipped" data-cell-pos="c1"></div>
+				<div class="game_cell" data-side="unflipped" data-cell-pos="c2"></div>
+				<div class="game_cell" data-side="unflipped" data-cell-pos="c3"></div>
+				<div class="game_cell" data-side="unflipped" data-cell-pos="c4"></div>
+				<div class="game_cell" data-side="unflipped" data-cell-pos="d1"></div>
+				<div class="game_cell" data-side="unflipped" data-cell-pos="d2"></div>
+				<div class="game_cell" data-side="unflipped" data-cell-pos="d3"></div>
+				<div class="game_cell" data-side="unflipped" data-cell-pos="d4"></div>
 			</div>
+            <div class="button_holder">
+                <button name="save" value="save">Save Game</button>
+                <button name="pause" value="pause">Pause Game</button>
+                <button name="restart" value="restart">Restart Game</button>
+                <button name="cancel" value="cancel">Cancel Game</button>
+            </div>
 		</div>
 	</body>
 </html>
