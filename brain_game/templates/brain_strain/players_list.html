@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html>
+	<head>
+		<title>Brain Cell Blaster</title>
+		<!--<link rel="stylesheet" type="text/css" href="../../static/css/style.css">-->
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" ></script>
+        <!--<script src="../../js/main.js"></script>-->
+        <!--<script src="../../static/js/main2.js"></script>-->
+        <script src="{% static 'js/main2.js' %}"></script>
+		<script>
+			jQuery(document).ready(function(){
+				init();
+			});
+		</script>
+	</head>
+	<body>
+		<div class="container">
+            <h1>List of Players</h1>
+
+            <div>
+                {% if list_of_players %}
+                    <ul>
+                        {% for individual_player in list_of_players %}
+                        <li><a href="index.html">{{ individual_player }}</a></li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    There is no one!
+                {% endif %}
+            </div>
+
+		</div>
+	</body>
+</html>

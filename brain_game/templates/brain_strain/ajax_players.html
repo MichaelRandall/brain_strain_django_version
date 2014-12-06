@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Brain Cell Blaster | Ajax List</title>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" ></script>
+		<script>
+
+            var request = new XMLHttpRequest();
+
+            function DisplayIt(data){
+                console.log("ready");
+                var textHolder = document.getElementById("List");
+
+                for (var i = 0; i < data.length; i++){
+                    var newItemHolder = document.createElement("p");
+                    var item = data[i];
+                    var newItem = document.createTextNode(item.lname + ", " + item.fname);
+                    newItemHolder.appendChild(newItem);
+                    textHolder.appendChild(newItemHolder);
+                }
+
+            }
+
+
+            function onStateChange(){
+               if ((request.readyState == 4) && (request.status == 200)){
+                   var data = JSON.parse(request.responseText);
+                   DisplayIt(data);
+               }
+            }
+
+            function init(){
+                request.onreadystatechange = onStateChange;
+                request.open("GET","/brain_strain/ajax/",true);
+                request.send();
+            }
+		</script>
+        <script>
+			$(document).ready(function(){
+				console.log("ready");
+                init();
+			});
+		</script>
+	</head>
+	<body>
+
+    <form id="f1" action="/brain_strain/ajax_players/" method="post" onsubmit="return captureSubmit()">
+        {% csrf_token %}
+        <input name="first_name">
+        <input type="submit" value="submit">
+    </form>
+
+
+
+		<div class="container">
+            <h1>List of Players</h1>
+
+            <div id = "List">
+
+            </div>
+
+		</div>
+	</body>
+</html>

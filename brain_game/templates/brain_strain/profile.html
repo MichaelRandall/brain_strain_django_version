@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html>
+	<head>
+		<title>Brain Cell Blaster</title>
+		<!--<link rel="stylesheet" type="text/css" href="../../static/css/style.css">-->
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" ></script>
+        <!--<script src="../../js/main.js"></script>-->
+        <!--<script src="../../static/js/main2.js"></script>-->
+        <script src="{% static 'js/main2.js' %}"></script>
+		<script>
+			jQuery(document).ready(function(){
+				init();
+			});
+		</script>
+	</head>
+	<body>
+		<div class="container">
+            <h1>Profile</h1>
+
+            <div>
+                {% if profile_info %}
+                    <ul>
+                        {% for profile_item in profile_info %}
+                        <li>{{ profile_item }} {{ profile_item.user_name }} {{ profile_item.sign_up_date }} {{ profile_item.player_gender }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    There is no one!
+                {% endif %}
+            </div>
+
+		</div>
+	</body>
+</html>
